@@ -16,5 +16,11 @@ public class TelaGrafica {
 		return false;
 		
 	}
+	
+	public int menu() {
+		JanelaMenu janela = new JanelaMenu();
+		janela.setVisible(true);
+		return janela.getOp();
+	}
 
 }

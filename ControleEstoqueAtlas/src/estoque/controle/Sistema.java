@@ -33,10 +33,16 @@ public class Sistema {
 		ifUsuario = tela.login(u);
 		if (ifUsuario == true) {
 			// chamar janela de menu
-			System.out.println("foi");
+			telaMenu();
 		} else {
 			// mensagem de erro
 		}
+	}
+	
+	public void telaMenu() {
+		int op;
+		op = tela.menu();
+		System.out.println(op);
 	}
 
 }

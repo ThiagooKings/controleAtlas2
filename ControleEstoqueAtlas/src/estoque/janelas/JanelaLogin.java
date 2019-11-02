@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -114,6 +115,9 @@ public class JanelaLogin implements ActionListener{
 			if (tfUsuario.getText().equals("")) {
 				tfUsuario.setBackground(Color.PINK);
 				preenchido = false;
+				JOptionPane.showMessageDialog(frmLogin,
+						"Preencha o campo de usuário!",
+						"Erro!", JOptionPane.ERROR_MESSAGE);
 			}else {
 				tfUsuario.setBackground(Color.WHITE);
 			}
@@ -121,6 +125,9 @@ public class JanelaLogin implements ActionListener{
 			if (tfSenha.getText().equals("")) {
 				tfSenha.setBackground(Color.PINK);
 				preenchido = false;
+				JOptionPane.showMessageDialog(frmLogin,
+						"Preencha o campo de senha!",
+						"Erro!", JOptionPane.ERROR_MESSAGE);
 			}else {
 				tfSenha.setBackground(Color.WHITE);
 			}
@@ -132,11 +139,16 @@ public class JanelaLogin implements ActionListener{
 				for(int i=0; i< usuarios.size(); i++) {
 					if(usuario.equals(usuarios.get(i).getLogin()) && senha.equals(usuarios.get(i).getSenha())) {			
 						usuarioExiste = true;
+						JOptionPane.showMessageDialog(frmLogin, "Bem vindo ao sistema de estoque, "+ usuarios.get(i).getNomeUsuario() , "Bem vindo",
+								JOptionPane.INFORMATION_MESSAGE);
+						frmLogin.dispose();
 						break;
 					}
 					usuarioExiste = false;
+					JOptionPane.showMessageDialog(frmLogin,
+							"Usuário ou senha incorretos",
+							"Erro!", JOptionPane.ERROR_MESSAGE);
 				}
-				frmLogin.dispose();
 			}
 			
 		}

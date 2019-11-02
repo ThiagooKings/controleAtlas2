@@ -8,15 +8,27 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class JanelaMenu implements ActionListener {
 	private JDialog frmMenu;
 	private JButton btnSair;
+	private JLabel lblMenu;
+	private JLabel lblProduto;
+	private JButton btnInserir;
+	private JButton btnAlterar;
+	private JButton btnListar;
+	private JButton btnExcluir;
+	private JLabel lblEstoque;
+	private JButton btnNovo;
+	private JButton btnBaixaEstoque;
+	private JSeparator separator;
+	private int op;
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -35,6 +47,14 @@ public class JanelaMenu implements ActionListener {
 			}
 		});
 	}
+	
+	public int getOp() {
+		return op;
+	}
+	
+	public void setVisible(boolean visible) {
+		frmMenu.setVisible(visible);
+	}
 
 	public JanelaMenu() {
 		initialize();
@@ -42,67 +62,96 @@ public class JanelaMenu implements ActionListener {
 	
 	public void initialize() {
 		frmMenu = new JDialog();
-		frmMenu.setBounds(100, 100, 450, 314);
+		frmMenu.setTitle("Sistema de Estoque");
+		frmMenu.setBounds(100, 100, 450, 333);
 		frmMenu.getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frmMenu.getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		frmMenu.setModal(true);
+		frmMenu.setAlwaysOnTop(true);
+		frmMenu.setResizable(false);
+		frmMenu.setLocationRelativeTo(null);
 		
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(198, 64, 1, 186);
-		contentPanel.add(desktopPane);
-		
-		JLabel lblMenu = new JLabel("Menu");
+		lblMenu = new JLabel("Menu");
 		lblMenu.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblMenu.setBounds(175, 23, 46, 14);
+		lblMenu.setBounds(186, 23, 46, 14);
 		contentPanel.add(lblMenu);
 		
-		JLabel lblProduto = new JLabel("Produto");
+		lblProduto = new JLabel("Produto");
 		lblProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblProduto.setBounds(59, 49, 64, 14);
+		lblProduto.setBounds(69, 49, 64, 31);
 		contentPanel.add(lblProduto);
 		
-		JButton btnInserir = new JButton("Inserir");
+		btnInserir = new JButton("Inserir");
 		btnInserir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnInserir.setBounds(45, 91, 89, 23);
+		btnInserir.addActionListener(this);
+		btnInserir.setBounds(33, 91, 130, 35);
 		contentPanel.add(btnInserir);
 		
-		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar = new JButton("Alterar");
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAlterar.setBounds(45, 137, 89, 23);
+		btnAlterar.addActionListener(this);
+		btnAlterar.setBounds(33, 137, 130, 37);
 		contentPanel.add(btnAlterar);
 		
-		JButton btnListar = new JButton("Listar");
+		btnListar = new JButton("Listar");
 		btnListar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnListar.setBounds(45, 185, 89, 23);
+		btnListar.addActionListener(this);
+		btnListar.setBounds(33, 185, 130, 34);
 		contentPanel.add(btnListar);
 		
-		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir = new JButton("Excluir");
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnExcluir.setBounds(45, 230, 89, 23);
+		btnExcluir.addActionListener(this);
+		btnExcluir.setBounds(33, 230, 130, 34);
 		contentPanel.add(btnExcluir);
 		
-		JLabel lblVenda = new JLabel("Venda");
-		lblVenda.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblVenda.setBounds(293, 49, 46, 14);
-		contentPanel.add(lblVenda);
+		lblEstoque = new JLabel("Estoque");
+		lblEstoque.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblEstoque.setBounds(293, 49, 64, 31);
+		contentPanel.add(lblEstoque);
 		
-		JButton btnNovaVenda = new JButton("Nova Venda");
-		btnNovaVenda.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNovaVenda.setBounds(271, 139, 117, 23);
-		contentPanel.add(btnNovaVenda);
+		btnNovo = new JButton("Adicionar");
+		btnNovo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNovo.addActionListener(this);
+		btnNovo.setBounds(244, 91, 148, 35);
+		contentPanel.add(btnNovo);
 		
 		btnSair = new JButton("Sair");
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSair.addActionListener(this);
-		btnSair.setBounds(335, 241, 89, 23);
+		btnSair.setBounds(335, 260, 89, 23);
 		contentPanel.add(btnSair);
+		
+		btnBaixaEstoque = new JButton("Baixar");
+		btnBaixaEstoque.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBaixaEstoque.setBounds(244, 138, 148, 35);
+		contentPanel.add(btnBaixaEstoque);
+		
+		separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(205, 65, 2, 199);
+		contentPanel.add(separator);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object o = e.getSource();
 		if (o == btnSair) {
+			op=0;
+			frmMenu.dispose();
+		} else if (o == btnInserir) {
+			op = 1;
+			frmMenu.dispose();
+		} else if (o == btnAlterar || o == btnExcluir || o == btnListar) {
+			op = 2;
+			frmMenu.dispose();
+		} else if(o == btnNovo) {
+			op = 3;
+			frmMenu.dispose();
+		} else {
+			op = 4;
 			frmMenu.dispose();
 		}
 
