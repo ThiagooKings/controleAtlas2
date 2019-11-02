@@ -12,6 +12,7 @@ public class Programa {
 	public static void main(String[] args) {
 		Connection conexao = new ConnectionFactory().getConnection();
 		sistema = new Sistema(conexao);
+		System.out.println("é isso");
 
 	}
 
