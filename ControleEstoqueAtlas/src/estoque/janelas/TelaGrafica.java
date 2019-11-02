@@ -2,6 +2,7 @@ package estoque.janelas;
 
 import java.util.ArrayList;
 
+import estoque.classes.Produto;
 import estoque.classes.Usuario;
 
 public class TelaGrafica {
@@ -21,6 +22,12 @@ public class TelaGrafica {
 		JanelaMenu janela = new JanelaMenu();
 		janela.setVisible(true);
 		return janela.getOp();
+	}
+	
+	public Produto inserirProduto(int id) {
+		JanelaInserirProduto janela = new JanelaInserirProduto(id);
+		janela.setVisible(true);
+		return janela.getProduto();
 	}
 
 }

@@ -142,4 +142,23 @@ public class ProdutoDAO {
 		return produtos;
 
 	}
+	
+	
+	public int getProxId() {
+		String sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE TABLE_NAME = 'tb_produto'";
+		int id = 1;
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.first())
+				id = rs.getInt("AUTO_INCREMENT");
+			rs.close();
+			stmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return id;
+	}
 }

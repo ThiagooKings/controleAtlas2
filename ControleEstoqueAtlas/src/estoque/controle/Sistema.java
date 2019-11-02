@@ -40,9 +40,13 @@ public class Sistema {
 	}
 	
 	public void telaMenu() {
-		int op;
+		int op, proxId;
+		Produto produto;
 		op = tela.menu();
-		System.out.println(op);
+		if (op == 1) {
+			proxId = pDAO.getProxId();
+			produto = tela.inserirProduto(proxId);
+		}
 	}
 
 }
