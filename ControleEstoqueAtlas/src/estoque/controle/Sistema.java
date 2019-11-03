@@ -16,7 +16,7 @@ public class Sistema {
 	private static ProdutoDAO pDAO;
 	private static MarcaDAO mDAO;
 	private static UsuarioDAO uDAO;
-	private static int proxPorduto=0;
+	//private static int proxPorduto;
 	private TelaGrafica tela = new TelaGrafica();
 
 	public Sistema(Connection conexao) {
@@ -32,20 +32,29 @@ public class Sistema {
 		ArrayList<Usuario> u = uDAO.listar();
 		ifUsuario = tela.login(u);
 		if (ifUsuario == true) {
-			// chamar janela de menu
 			telaMenu();
-		} else {
-			// mensagem de erro
-		}
+		} 
 	}
 	
 	public void telaMenu() {
-		int op, proxId;
-		Produto produto;
+		int op;
 		op = tela.menu();
 		if (op == 1) {
-			proxId = pDAO.getProxId();
-			produto = tela.inserirProduto(proxId);
+			telaInserirProduto();
+		}
+	}
+	
+	public void telaInserirProduto() {
+		Produto produto;
+		int proxId;
+		proxId = pDAO.getProxId();
+		
+		ArrayList<Marca> marcas = mDAO.listar();
+		produto = tela.inserirProduto(proxId, marcas);
+		if (produto != null) {
+			System.out.println("TEM PRODUTO");
+			pDAO.inserir(produto);
+			telaMenu();
 		}
 	}
 
