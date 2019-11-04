@@ -52,7 +52,6 @@ public class Sistema {
 		ArrayList<Marca> marcas = mDAO.listar();
 		produto = tela.inserirProduto(proxId, marcas);
 		if (produto != null) {
-			System.out.println("TEM PRODUTO");
 			pDAO.inserir(produto);
 			telaMenu();
 		}

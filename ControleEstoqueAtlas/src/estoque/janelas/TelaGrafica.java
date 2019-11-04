@@ -12,7 +12,6 @@ public class TelaGrafica {
 		JanelaLogin janela = new JanelaLogin(usuarios);
 		janela.setVisible(true);
 		if(janela.getUsuarioExiste() == true) {
-			System.out.println("entrou aaaa");
 			return true;
 		}
 		return false;

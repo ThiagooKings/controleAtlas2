@@ -247,6 +247,6 @@ public class JanelaInserirProduto implements ActionListener {
 			frmProduto.dispose();
 		}
 		
-	}
+ 	}
 
 }
