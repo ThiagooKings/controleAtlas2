@@ -8,6 +8,12 @@ import estoque.classes.Usuario;
 
 public class TelaGrafica {
 	
+	private int opAltEx;
+	
+	public int getOp(){
+		return opAltEx;
+	}
+	
 	public boolean login (ArrayList <Usuario> usuarios) {
 		JanelaLogin janela = new JanelaLogin(usuarios);
 		janela.setVisible(true);
@@ -30,5 +36,15 @@ public class TelaGrafica {
 		Produto p = janela.getProduto();
 		return p;
 	}
+	
+	public Produto listaProduto(ArrayList<Produto> produtos) {
+		JanelaListar janela = new JanelaListar(produtos);
+		janela.setVisible(true);
+		opAltEx= janela.getOp();
+		Produto p = janela.getProdutosel();
+		return p;
+	}
+	
+	
 
 }

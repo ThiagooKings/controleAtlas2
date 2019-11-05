@@ -41,6 +41,8 @@ public class Sistema {
 		op = tela.menu();
 		if (op == 1) {
 			telaInserirProduto();
+		} else if( op == 2) {
+			telaListarProduto();
 		}
 	}
 	
@@ -54,6 +56,19 @@ public class Sistema {
 		if (produto != null) {
 			pDAO.inserir(produto);
 			telaMenu();
+		}
+	}
+	
+	public void telaListarProduto() {
+		ArrayList<Produto> produtos;
+		produtos = pDAO.listar();
+		Produto p = tela.listaProduto(produtos);
+		if(p != null) {
+			if(tela.getOp() == 0) {
+				System.out.println("foi");
+				pDAO.excluir(p);
+				telaMenu();
+			}
 		}
 	}
 

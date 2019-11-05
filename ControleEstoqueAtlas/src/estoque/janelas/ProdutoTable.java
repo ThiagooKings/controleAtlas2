@@ -3,12 +3,15 @@ package estoque.janelas;
 import estoque.classes.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+
+
 public class ProdutoTable extends AbstractTableModel {
 
-	private ArrayList<Produto> produtos;
+	private ArrayList<Produto> linhas;
 	private String[] colunas = new String[] {"ID", "NOME", "PREÇO", "QUANTIDADE", "UND","MARCA"};
 	private static final int ID = 0;
 	private static final int Nome = 1;
@@ -20,66 +23,33 @@ public class ProdutoTable extends AbstractTableModel {
 	
 	public ProdutoTable() {
 		super();
-	}
-
-	public ProdutoTable(ArrayList<Produto> produtos, String[] colunas) {
-		super();
-		this.produtos = produtos;
-		this.colunas = colunas;
+		linhas = new ArrayList<Produto>();
+		
 	}
 	
-	public Produto getProdutos(int indice) {
-		return produtos.get(indice);
+	public ProdutoTable(List<Produto> linhas) {
+		super();
+		this.linhas = new ArrayList<Produto>(linhas);
+	}
+	
+	public Produto getProduto(int indice) {
+		return linhas.get(indice);
 	}
 
-	public void setProdutos(ArrayList<Produto> produtos) {
-		this.produtos = produtos;
-	}
-
-	public String[] getColunas() {
-		return colunas;
-	}
-
-	public void setColunas(String[] colunas) {
-		this.colunas = colunas;
-	}
-
-	public static int getId() {
-		return ID;
-	}
-
-	public static int getNome() {
-		return Nome;
-	}
-
-	public static int getPreco() {
-		return Preco;
-	}
-
-	public static int getQnt() {
-		return Qnt;
-	}
-
-	public static int getUnd() {
-		return Und;
-	}
-
-	public static int getMarca() {
-		return Marca;
-	}
-
-	@Override
 	public int getColumnCount() {
 		return colunas.length;
 	}
-	@Override
+
 	public int getRowCount() {
-		return produtos.size();
+		return linhas.size();
 	}
+
 	@Override
 	public String getColumnName(int columnIndex) {
 		return colunas[columnIndex];
 	}
+
+
 	public Class<?> getColumnClass(int columnIndex) {
 		switch (columnIndex) {
 		case ID:
@@ -93,15 +63,36 @@ public class ProdutoTable extends AbstractTableModel {
 		case Und:
 			return String.class;
 		case Marca:
-			return Marca.class;
+			return String.class;
 			
-		default: // cloumIndex receber o valor de uma coluna q nao existe
+		default:
 			throw new IndexOutOfBoundsException("columnIndex out of bounds");
 		}
 	}
 	
-	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		return false;
+	}
+
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}}
+		Produto produto = linhas.get(rowIndex);
+
+		switch (columnIndex) {
+		case ID:
+			return produto.getIdProduto();
+		case Nome:
+			return produto.getNomeProduto();
+		case Preco:
+			return produto.getPreco();
+		case Qnt:
+			return produto.getQtdestoque();
+		case Und:
+			return produto.getUndMed();
+		case Marca:
+			return produto.getMarca().getNomeMarca();
+
+		default:
+			throw new IndexOutOfBoundsException("columnIndex out of bounds");
+		}
+	}
+}
