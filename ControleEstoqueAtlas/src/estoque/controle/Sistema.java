@@ -55,8 +55,8 @@ public class Sistema {
 		produto = tela.inserirProduto(proxId, marcas);
 		if (produto != null) {
 			pDAO.inserir(produto);
-			telaMenu();
 		}
+		telaMenu();
 	}
 	
 	public void telaListarProduto() {
@@ -67,9 +67,9 @@ public class Sistema {
 			if(tela.getOp() == 0) {
 				System.out.println("foi");
 				pDAO.excluir(p);
-				telaMenu();
 			}
 		}
+		telaMenu();
 	}
 
 }

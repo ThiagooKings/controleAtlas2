@@ -195,7 +195,7 @@ public class JanelaListar implements ActionListener, ListSelectionListener {
 		bg.add(rdbtnQnt);
 		frmListar.getContentPane().add(rdbtnQnt);
 
-		rdbtnUmedida = new JRadioButton("U. Medida");
+		rdbtnUmedida = new JRadioButton("U. Med.");
 		rdbtnUmedida.setSelected(false);
 		rdbtnUmedida.setBounds(100, 87, 79, 23);
 		rdbtnUmedida.addActionListener(this);
@@ -204,7 +204,7 @@ public class JanelaListar implements ActionListener, ListSelectionListener {
 
 		rdbtnMarca = new JRadioButton("Marca");
 		rdbtnMarca.setSelected(false);
-		rdbtnMarca.setBounds(181, 87, 109, 23);
+		rdbtnMarca.setBounds(181, 87, 79, 23);
 		rdbtnMarca.addActionListener(this);
 		bg.add(rdbtnMarca);
 		frmListar.getContentPane().add(rdbtnMarca);
