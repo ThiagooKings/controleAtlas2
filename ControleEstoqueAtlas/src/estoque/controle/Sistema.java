@@ -65,8 +65,13 @@ public class Sistema {
 		Produto p = tela.listaProduto(produtos);
 		if(p != null) {
 			if(tela.getOp() == 0) {
-				System.out.println("foi");
 				pDAO.excluir(p);
+			} if (tela.getOp() == 1) {
+				ArrayList<Marca> marcas = mDAO.listar();
+				Produto palt = tela.alteraProduto(p, marcas);
+				if(palt != null) {
+					pDAO.alterar(palt);
+				}
 			}
 		}
 		telaMenu();

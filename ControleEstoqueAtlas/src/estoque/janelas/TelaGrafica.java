@@ -45,6 +45,13 @@ public class TelaGrafica {
 		return p;
 	}
 	
+	public Produto alteraProduto(Produto p, ArrayList<Marca> m) {
+		JanelaAltera janela = new JanelaAltera(p,m);
+		janela.setVisible(true);
+		Produto palt = janela.getProduto();
+		return palt;
+	}
+	
 	
 
 }
