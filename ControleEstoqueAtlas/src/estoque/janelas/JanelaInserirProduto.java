@@ -43,6 +43,7 @@ public class JanelaInserirProduto implements ActionListener {
 	protected JButton btnCancelar;
 	protected JButton btnConfirmar;
 	protected JLabel lblId;
+	protected int flagAlt;
 
 	/**
 	 * Launch the application.
@@ -236,9 +237,17 @@ public class JanelaInserirProduto implements ActionListener {
 						}
 					}
 					produto = new Produto(cod, nomeproduto, preco, quantidade, und, m);
+					if(flagAlt == 1) {
+						
+						JOptionPane.showMessageDialog(frmProduto, "Produto alterado com Sucesso", "Aviso!",
+								JOptionPane.INFORMATION_MESSAGE);
+						frmProduto.dispose();
+						
+					} else {
 					JOptionPane.showMessageDialog(frmProduto, "Produto adicionado com Sucesso", "Aviso!",
 							JOptionPane.INFORMATION_MESSAGE);
 					frmProduto.dispose();
+					}
 					
 				}
 			}
