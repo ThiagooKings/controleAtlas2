@@ -19,15 +19,11 @@ public class JanelaMenu implements ActionListener {
 	private JDialog frmMenu;
 	private JButton btnSair;
 	private JLabel lblMenu;
-	private JLabel lblProduto;
 	private JButton btnInserir;
 	private JButton btnAlterar;
 	private JButton btnListar;
 	private JButton btnExcluir;
-	private JLabel lblEstoque;
-	private JButton btnNovo;
-	private JButton btnBaixaEstoque;
-	private JSeparator separator;
+	private JButton btnAlterarEstoque;
 	private int op;
 
 	private final JPanel contentPanel = new JPanel();
@@ -63,7 +59,7 @@ public class JanelaMenu implements ActionListener {
 	public void initialize() {
 		frmMenu = new JDialog();
 		frmMenu.setTitle("Sistema de Estoque");
-		frmMenu.setBounds(100, 100, 450, 333);
+		frmMenu.setBounds(100, 100, 370, 280);
 		frmMenu.getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frmMenu.getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -73,66 +69,46 @@ public class JanelaMenu implements ActionListener {
 		frmMenu.setResizable(false);
 		frmMenu.setLocationRelativeTo(null);
 		
-		lblMenu = new JLabel("Menu");
+		lblMenu = new JLabel("Menu Principal");
 		lblMenu.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblMenu.setBounds(186, 23, 46, 14);
+		lblMenu.setBounds(127, 25, 148, 23);
 		contentPanel.add(lblMenu);
 		
-		lblProduto = new JLabel("Produto");
-		lblProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblProduto.setBounds(69, 49, 64, 31);
-		contentPanel.add(lblProduto);
-		
-		btnInserir = new JButton("Inserir");
+		btnInserir = new JButton("Inserir Produto");
 		btnInserir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnInserir.addActionListener(this);
-		btnInserir.setBounds(33, 91, 130, 35);
+		btnInserir.setBounds(33, 91, 130, 34);
 		contentPanel.add(btnInserir);
 		
-		btnAlterar = new JButton("Alterar");
+		btnAlterar = new JButton("Alterar Produto");
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAlterar.addActionListener(this);
-		btnAlterar.setBounds(33, 137, 130, 37);
+		btnAlterar.setBounds(33, 137, 130, 34);
 		contentPanel.add(btnAlterar);
 		
-		btnListar = new JButton("Listar");
+		btnListar = new JButton("Listar Produtos");
 		btnListar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnListar.addActionListener(this);
-		btnListar.setBounds(33, 185, 130, 34);
+		btnListar.setBounds(201, 91, 130, 34);
 		contentPanel.add(btnListar);
 		
-		btnExcluir = new JButton("Excluir");
+		btnExcluir = new JButton("Excluir Produto");
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExcluir.addActionListener(this);
-		btnExcluir.setBounds(33, 230, 130, 34);
+		btnExcluir.setBounds(201, 138, 130, 34);
 		contentPanel.add(btnExcluir);
 		
-		lblEstoque = new JLabel("Estoque");
-		lblEstoque.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEstoque.setBounds(293, 49, 64, 31);
-		contentPanel.add(lblEstoque);
-		
-		btnNovo = new JButton("Adicionar");
-		btnNovo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNovo.addActionListener(this);
-		btnNovo.setBounds(244, 91, 148, 35);
-		contentPanel.add(btnNovo);
+		btnAlterarEstoque = new JButton("Alterar Estoque");
+		btnAlterarEstoque.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAlterarEstoque.addActionListener(this);
+		btnAlterarEstoque.setBounds(33, 185, 130, 34);
+		contentPanel.add(btnAlterarEstoque);
 		
 		btnSair = new JButton("Sair");
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSair.addActionListener(this);
-		btnSair.setBounds(335, 260, 89, 23);
+		btnSair.setBounds(201, 183, 130, 34);
 		contentPanel.add(btnSair);
-		
-		btnBaixaEstoque = new JButton("Baixar");
-		btnBaixaEstoque.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnBaixaEstoque.setBounds(244, 138, 148, 35);
-		contentPanel.add(btnBaixaEstoque);
-		
-		separator = new JSeparator();
-		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(205, 65, 2, 199);
-		contentPanel.add(separator);
 	}
 
 	@Override
@@ -147,7 +123,7 @@ public class JanelaMenu implements ActionListener {
 		} else if (o == btnAlterar || o == btnExcluir || o == btnListar) {
 			op = 2;
 			frmMenu.dispose();
-		} else if(o == btnNovo) {
+		} else if(o == btnAlterarEstoque) {
 			op = 3;
 			frmMenu.dispose();
 		} else {
