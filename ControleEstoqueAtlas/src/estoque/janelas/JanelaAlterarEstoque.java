@@ -6,8 +6,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+
 
 import estoque.classes.Marca;
 import estoque.classes.Produto;
@@ -21,7 +20,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
+
 
 public class JanelaAlterarEstoque implements ActionListener {
 	protected JDialog frmProduto;
@@ -39,6 +38,11 @@ public class JanelaAlterarEstoque implements ActionListener {
 	protected JLabel lblId;
 	protected int flagAlt;
 	private JTextField textField;
+	protected JLabel lblUndMed;
+	protected JLabel lblQuantAlt;
+	protected JLabel lblUMedida;
+	protected JButton btnAdd;
+	protected JButton btnBaixa;
 
 	/**
 	 * Launch the application.
@@ -61,17 +65,16 @@ public class JanelaAlterarEstoque implements ActionListener {
 		frmProduto.setVisible(visible);
 	}
 	
-	public JanelaAlterarEstoque(int cod, ArrayList<Marca> marcas) {
-		initialize(cod, marcas);
+	public JanelaAlterarEstoque(Produto prod) {
+		initialize(prod);
 	}
 	
-	public void initialize(int cod, ArrayList<Marca> marcas) {
-		this.marcas = marcas;
-		this.cod = cod;
+	public void initialize(Produto prod) {
+
 		
 		frmProduto = new JDialog();
-		frmProduto.setTitle("Inserir Produto");
-		frmProduto.setBounds(100, 100, 527, 336);
+		frmProduto.setTitle("Alterar Estoque");
+		frmProduto.setBounds(100, 100, 527, 300);
 		frmProduto.getContentPane().setLayout(null);
 		frmProduto.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frmProduto.setModal(true);
@@ -81,7 +84,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 		
 		
 		lblInserirProduto = new JLabel("Alterar Estoque");
-		lblInserirProduto.setBounds(180, 36, 143, 14);
+		lblInserirProduto.setBounds(211, 31, 143, 20);
 		lblInserirProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmProduto.getContentPane().add(lblInserirProduto);
 		
@@ -92,6 +95,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 		
 		tfNome = new JTextField();
 		tfNome.setEnabled(false);
+		tfNome.setText(String.valueOf(prod.getNomeProduto()));
 		tfNome.setBounds(183, 85, 301, 20);
 		frmProduto.getContentPane().add(tfNome);
 		tfNome.setColumns(10);
@@ -104,20 +108,21 @@ public class JanelaAlterarEstoque implements ActionListener {
 		
 		tfQuantidade = new JTextField();
 		tfQuantidade.setEnabled(false);
-		tfQuantidade.setBounds(162, 131, 72, 20);
+		tfQuantidade.setText(String.valueOf(prod.getQtdestoque()));
+		tfQuantidade.setBounds(151, 132, 72, 20);
 		frmProduto.getContentPane().add(tfQuantidade);
 		tfQuantidade.setColumns(10);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(296, 263, 89, 23);
+		btnCancelar.setBounds(309, 237, 89, 23);
 		frmProduto.getContentPane().add(btnCancelar);
 		
 		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnConfirmar.addActionListener(this);
-		btnConfirmar.setBounds(395, 263, 89, 23);
+		btnConfirmar.setBounds(408, 237, 89, 23);
 		frmProduto.getContentPane().add(btnConfirmar);
 		
 		lblId = new JLabel("ID:");
@@ -127,30 +132,42 @@ public class JanelaAlterarEstoque implements ActionListener {
 		
 		tfId = new JTextField();
 		tfId.setEditable(false);
-		tfId.setText(String.valueOf(cod));
+		tfId.setText(String.valueOf(prod.getIdProduto()));
 		tfId.setColumns(10);
 		tfId.setBounds(56, 85, 38, 20);
 		frmProduto.getContentPane().add(tfId);
 		
-		JLabel lblUndMed = new JLabel("U. Medida:");
+		lblUndMed = new JLabel("U. Medida");
 		lblUndMed.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblUndMed.setBounds(244, 134, 79, 14);
+		lblUndMed.setBounds(233, 135, 79, 14);
 		frmProduto.getContentPane().add(lblUndMed);
 		
-		JLabel lblQuantAlt = new JLabel("Quantidade Alterada:");
+		lblQuantAlt = new JLabel("Quantidade Alterada:");
 		lblQuantAlt.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblQuantAlt.setBounds(30, 169, 141, 14);
+		lblQuantAlt.setBounds(30, 179, 141, 14);
 		frmProduto.getContentPane().add(lblQuantAlt);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(189, 166, 72, 20);
+		textField.setBounds(172, 173, 72, 20);
 		frmProduto.getContentPane().add(textField);
 		
-		JLabel label_1 = new JLabel("U. Medida:");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_1.setBounds(271, 169, 79, 14);
-		frmProduto.getContentPane().add(label_1);
+		lblUMedida = new JLabel("U. Medida");
+		lblUMedida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUMedida.setBounds(254, 176, 79, 14);
+		frmProduto.getContentPane().add(lblUMedida);
+		
+		btnAdd = new JButton("+");
+		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAdd.setBounds(325, 171, 46, 23);
+		btnAdd.addActionListener(this);
+		frmProduto.getContentPane().add(btnAdd);
+		
+		btnBaixa = new JButton("-");
+		btnBaixa.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBaixa.setBounds(381, 171, 46, 23);
+		btnBaixa.addActionListener(this);
+		frmProduto.getContentPane().add(btnBaixa);
 	}
 
 	@Override
