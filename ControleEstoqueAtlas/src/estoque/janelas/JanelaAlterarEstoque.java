@@ -1,8 +1,7 @@
 package estoque.janelas;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
+
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -90,7 +89,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 		frmEstoque.getContentPane().add(lblNome);
 
 		tfNome = new JTextField();
-		tfNome.setEnabled(false);
+		tfNome.setEditable(false);
 		tfNome.setText(String.valueOf(produto.getNomeProduto()));
 		tfNome.setBounds(183, 85, 301, 20);
 		frmEstoque.getContentPane().add(tfNome);
@@ -102,7 +101,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 		frmEstoque.getContentPane().add(lblQuantidade);
 
 		tfQuantidade = new JTextField();
-		tfQuantidade.setEnabled(false);
+		tfQuantidade.setEditable(false);
 		tfQuantidade.setText(String.valueOf(produto.getQtdestoque()));
 		tfQuantidade.setBounds(151, 132, 72, 20);
 		frmEstoque.getContentPane().add(tfQuantidade);
@@ -232,8 +231,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 				}
 
 				if (erro == false) {
-					quantAlt = quantAlt - quantAtual;
-					tfQuantidade.setText(String.valueOf(quantAlt));
+					quantAlt = quantAtual - quantAlt;
 
 					if (quantAlt < 0) {
 						JOptionPane.showMessageDialog(frmEstoque,
@@ -241,6 +239,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 								"Erro!", JOptionPane.ERROR_MESSAGE);
 					} else {
 						qtdAlterada = quantAlt;
+						tfQuantidade.setText(String.valueOf(quantAlt));
 					}
 					// produto = new Produto(cod, nomeproduto, preco, quantidade, und, m);
 

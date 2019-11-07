@@ -66,10 +66,15 @@ public class Sistema {
 		if(p != null) {
 			if(tela.getOp() == 0) {
 				pDAO.excluir(p);
-			} if (tela.getOp() == 1) {
+			}else if (tela.getOp() == 1) {
 				ArrayList<Marca> marcas = mDAO.listar();
 				Produto palt = tela.alteraProduto(p, marcas);
 				if(palt != null) {
+					pDAO.alterar(palt);
+				}
+			} else if (tela.getOp() == 2) {
+				Produto palt = tela.alterarEstoque(p);
+				if (palt != null) {
 					pDAO.alterar(palt);
 				}
 			}

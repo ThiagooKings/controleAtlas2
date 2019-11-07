@@ -120,11 +120,8 @@ public class JanelaMenu implements ActionListener {
 		} else if (o == btnInserir) {
 			op = 1;
 			frmMenu.dispose();
-		} else if (o == btnAlterar || o == btnExcluir || o == btnListar) {
+		} else if (o == btnAlterar || o == btnExcluir || o == btnListar || o == btnAlterarEstoque) {
 			op = 2;
-			frmMenu.dispose();
-		} else if(o == btnAlterarEstoque) {
-			op = 3;
 			frmMenu.dispose();
 		} else {
 			op = 4;

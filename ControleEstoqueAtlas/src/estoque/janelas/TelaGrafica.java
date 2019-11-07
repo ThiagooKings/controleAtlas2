@@ -52,6 +52,13 @@ public class TelaGrafica {
 		return palt;
 	}
 	
+	public Produto alterarEstoque(Produto p) {
+		JanelaAlterarEstoque janela = new JanelaAlterarEstoque(p);
+		janela.setVisible(true);
+		Produto palt = janela.getProduto();
+		return palt;
+	}
+	
 	
 
 }

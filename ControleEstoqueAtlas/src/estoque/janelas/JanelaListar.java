@@ -57,6 +57,7 @@ public class JanelaListar implements ActionListener, ListSelectionListener {
 	private JButton btnProcurar;
 	private int opAltEx;
 	private TableRowSorter<ProdutoTable> sorter;
+	private JButton btEstoque;
 
 	public JanelaListar(ArrayList<Produto> produtos) {
 		todosProdutos = produtos;
@@ -137,6 +138,12 @@ public class JanelaListar implements ActionListener, ListSelectionListener {
 		layout.setHgap(10);
 		layout.setAlignment(FlowLayout.RIGHT);
 		frmListar.getContentPane().add(panelBotoes);
+		
+		tbProdutos.getSelectionModel().addListSelectionListener(this);
+		btEstoque = new JButton("Alterar Estoque");
+		btEstoque.setEnabled(false);
+		btEstoque.addActionListener(this);
+		panelBotoes.add(btEstoque);
 
 		tbProdutos.getSelectionModel().addListSelectionListener(this);
 		btAlterar = new JButton("Alterar");
@@ -270,6 +277,12 @@ public class JanelaListar implements ActionListener, ListSelectionListener {
 			produtoSel = tmProdutos.getProduto(linhaSel);
 			opAltEx = 1;
 			frmListar.dispose();
+		}else if (o == btEstoque) {
+			int linhaSel = tbProdutos.getSelectedRow();
+			produtoSel = tmProdutos.getProduto(linhaSel);
+			opAltEx = 2;
+			frmListar.dispose();
+		
 		} else if (o == btnProcurar) {
 			if (rdbtnNomeProduto.isSelected()) {
 				filtragemColuna(1);
@@ -302,5 +315,6 @@ public class JanelaListar implements ActionListener, ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		btExcluir.setEnabled(true); // ativando o botao
 		btAlterar.setEnabled(true);
+		btEstoque.setEnabled(true);
 	}
 }
