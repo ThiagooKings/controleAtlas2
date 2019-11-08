@@ -76,7 +76,7 @@ public class JanelaInserirProduto implements ActionListener {
 		
 		frmProduto = new JDialog();
 		frmProduto.setTitle("Inserir Produto");
-		frmProduto.setBounds(100, 100, 527, 336);
+		frmProduto.setBounds(100, 100, 540, 352);
 		frmProduto.getContentPane().setLayout(null);
 		frmProduto.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frmProduto.setModal(true);
@@ -86,8 +86,8 @@ public class JanelaInserirProduto implements ActionListener {
 		
 		
 		lblInserirProduto = new JLabel("Inserir Produto");
-		lblInserirProduto.setBounds(180, 36, 116, 14);
-		lblInserirProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblInserirProduto.setBounds(216, 23, 133, 14);
+		lblInserirProduto.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frmProduto.getContentPane().add(lblInserirProduto);
 		
 		lblNome = new JLabel("Nome:");
@@ -219,13 +219,13 @@ public class JanelaInserirProduto implements ActionListener {
 				if(quantidade < 0) {
 					erro = true;
 					JOptionPane.showMessageDialog(frmProduto,
-							"nao são permididos numeros negativos no campo de quantidade! ",
+							"Não são permitidos números negativos no campo de Quantidade! ",
 							"Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 				if(preco < 0) {
 					erro = true;
 					JOptionPane.showMessageDialog(frmProduto,
-							"nao são permididos numeros negativos no campo de preço! ",
+							"Não são permididos números negativos no campo de Preço! ",
 							"Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 				
@@ -239,12 +239,12 @@ public class JanelaInserirProduto implements ActionListener {
 					produto = new Produto(cod, nomeproduto, preco, quantidade, und, m);
 					if(flagAlt == 1) {
 						
-						JOptionPane.showMessageDialog(frmProduto, "Produto alterado com Sucesso", "Aviso!",
+						JOptionPane.showMessageDialog(frmProduto, "Produto alterado com sucesso", "Aviso!",
 								JOptionPane.INFORMATION_MESSAGE);
 						frmProduto.dispose();
 						
 					} else {
-					JOptionPane.showMessageDialog(frmProduto, "Produto adicionado com Sucesso", "Aviso!",
+					JOptionPane.showMessageDialog(frmProduto, "Produto adicionado com sucesso", "Aviso!",
 							JOptionPane.INFORMATION_MESSAGE);
 					frmProduto.dispose();
 					}

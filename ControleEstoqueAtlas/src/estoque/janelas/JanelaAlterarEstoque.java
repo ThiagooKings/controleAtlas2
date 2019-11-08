@@ -70,7 +70,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 		this.produto = prod;
 		frmEstoque = new JDialog();
 		frmEstoque.setTitle("Alterar Estoque");
-		frmEstoque.setBounds(100, 100, 527, 300);
+		frmEstoque.setBounds(100, 100, 531, 305);
 		frmEstoque.getContentPane().setLayout(null);
 		frmEstoque.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frmEstoque.setModal(true);
@@ -190,7 +190,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 				if (quantAlt < 0) {
 					erro = true;
 					JOptionPane.showMessageDialog(frmEstoque,
-							"nao são permididos numeros negativos no campo de quantidade! ", "Erro!",
+							"Não são permitidos números negativos no campo de Quantidade! ", "Erro!",
 							JOptionPane.ERROR_MESSAGE);
 				}
 
@@ -226,7 +226,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 				if (quantAlt < 0) {
 					erro = true;
 					JOptionPane.showMessageDialog(frmEstoque,
-							"nao são permididos numeros negativos no campo de quantidade! ", "Erro!",
+							"Não são permitidos números negativos no campo Quantidade! ", "Erro!",
 							JOptionPane.ERROR_MESSAGE);
 				}
 
@@ -235,7 +235,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 
 					if (quantAlt < 0) {
 						JOptionPane.showMessageDialog(frmEstoque,
-								"O valor de quantidade a retirar é superior ao atua! Nao são permididos numeros negativos no campo de quantidade! ",
+								"O valor de quantidade a retirar é superior ao atual! Não são permididos números negativos no campo Quantidade! ",
 								"Erro!", JOptionPane.ERROR_MESSAGE);
 					} else {
 						qtdAlterada = quantAlt;
@@ -249,7 +249,7 @@ public class JanelaAlterarEstoque implements ActionListener {
 		} else if (o == btnConfirmar) {
 			produto.setQtdestoque(qtdAlterada);
 			
-			JOptionPane.showMessageDialog(frmEstoque, "Estoque do produto alterado com Sucesso", "Aviso!",
+			JOptionPane.showMessageDialog(frmEstoque, "Estoque do produto alterado com sucesso", "Aviso!",
 					JOptionPane.INFORMATION_MESSAGE);
 			frmEstoque.dispose();
 

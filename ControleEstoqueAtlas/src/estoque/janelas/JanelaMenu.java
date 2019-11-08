@@ -59,7 +59,7 @@ public class JanelaMenu implements ActionListener {
 	public void initialize() {
 		frmMenu = new JDialog();
 		frmMenu.setTitle("Sistema de Estoque");
-		frmMenu.setBounds(100, 100, 370, 280);
+		frmMenu.setBounds(100, 100, 382, 338);
 		frmMenu.getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frmMenu.getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -83,7 +83,7 @@ public class JanelaMenu implements ActionListener {
 		btnAlterar = new JButton("Alterar Produto");
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAlterar.addActionListener(this);
-		btnAlterar.setBounds(33, 137, 130, 34);
+		btnAlterar.setBounds(33, 151, 130, 34);
 		contentPanel.add(btnAlterar);
 		
 		btnListar = new JButton("Listar Produtos");
@@ -95,19 +95,19 @@ public class JanelaMenu implements ActionListener {
 		btnExcluir = new JButton("Excluir Produto");
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExcluir.addActionListener(this);
-		btnExcluir.setBounds(201, 138, 130, 34);
+		btnExcluir.setBounds(201, 151, 130, 34);
 		contentPanel.add(btnExcluir);
 		
 		btnAlterarEstoque = new JButton("Alterar Estoque");
 		btnAlterarEstoque.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAlterarEstoque.addActionListener(this);
-		btnAlterarEstoque.setBounds(33, 185, 130, 34);
+		btnAlterarEstoque.setBounds(33, 211, 130, 34);
 		contentPanel.add(btnAlterarEstoque);
 		
 		btnSair = new JButton("Sair");
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSair.addActionListener(this);
-		btnSair.setBounds(201, 183, 130, 34);
+		btnSair.setBounds(201, 211, 130, 34);
 		contentPanel.add(btnSair);
 	}
 

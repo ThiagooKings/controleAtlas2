@@ -100,7 +100,7 @@ public class JanelaListaEstoque implements ActionListener, ListSelectionListener
 
 		scroll = new JScrollPane(tbProdutos, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scroll.setBounds(33, 167, 469, 239);
+		scroll.setBounds(75, 160, 469, 239);
 		// panel.add(scroll);
 		// scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		// scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -167,7 +167,7 @@ public class JanelaListaEstoque implements ActionListener, ListSelectionListener
 
 		ButtonGroup bg = new ButtonGroup();
 
-		rdbtnCdigo = new JRadioButton("C\u00F3digo");
+		rdbtnCdigo = new JRadioButton("Código");
 		rdbtnCdigo.setSelected(true);
 		rdbtnCdigo.setBounds(100, 55, 64, 23);
 		rdbtnCdigo.addActionListener(this);
